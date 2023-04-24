@@ -1,8 +1,10 @@
 namespace Store;
 public class Product
 {
-    String name;
-    int productID;
+    protected String name;
+    protected int productID;
+
+    protected double price;
 
     public Product(){}
 }
