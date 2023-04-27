@@ -1,6 +1,8 @@
 namespace Store;
-public class DairyProduct : Product
+public abstract class DairyProduct : Product
 {
-    protected int PercentFat;
+    protected double percentFat;
     public DairyProduct(){}
+
+    public override abstract String Print();
 }

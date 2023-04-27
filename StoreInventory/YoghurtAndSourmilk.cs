@@ -8,6 +8,11 @@ public class YoghurtAndSourmilk : DairyProduct
         this.name = name;
         this.taste = taste;
     }
+
+     public override string Print()
+    {
+        return $"Name: {name}, Price: {price} SEK, ProductID: {productID}, Taste: {taste}, Percent Fat: {percentFat}%";
+    }
 }
 
 public enum Taste
