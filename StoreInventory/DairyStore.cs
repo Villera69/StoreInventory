@@ -13,8 +13,7 @@ public class DairyStore{
             Console.WriteLine("Welcome to the dairy store. Are you a customer or an administrator? Choose by entering one of the numbers in the menu below");
             Console.WriteLine(" (1) Administrator");
             Console.WriteLine(" (2) Customer");
-            String choice = Console.ReadLine();
-            switch (choice)
+            switch (Console.ReadLine())
             {
                 case "1":
                     AdminMenu();
@@ -59,92 +58,84 @@ public class DairyStore{
         }
     }
     void AddProductMenu(){
-        int age;
-        double percentFat = 0;
-        int productID;
-        double price;
-        MilkType milkType = MilkType.Skimmed;
-        String name;
-        Boolean fail = true;
-        Console.WriteLine("What type of product do you wish to add?");
-        Console.WriteLine("(1) Cheese");
-        Console.WriteLine("(2) Milk");
-        Console.WriteLine("(3) Yoghurt or Sourmilk");
-        Console.WriteLine("(4) Butter");
-        Console.WriteLine("(5) Cream");
-        String choice = Console.ReadLine();
-        switch(choice)
+        Boolean keepGoing = true;
+        do
         {
-            case "1":
+            Console.WriteLine("What type of product do you wish to add?");
+            Console.WriteLine("(1) Cheese");
+            Console.WriteLine("(2) Milk");
+            Console.WriteLine("(3) Yoghurt or Sourmilk");
+            Console.WriteLine("(4) Butter");
+            Console.WriteLine("(5) Cream");
+            Console.WriteLine("(6) Exit the add product menu");
+            switch(Console.ReadLine())
+            {
+                case "1":
+                    Cheese cheese = new();
 
-            //Skriv detta i cheese-klassen.
-                Cheese cheese = new();
+                    Console.Write("\nType the amount of products of this type you want to add: ");
+                    int amount = int.Parse(Console.ReadLine());
 
-                Console.Write("\nType the amount of products of this type you want to add: ");
-                int amount = int.Parse(Console.ReadLine());
-
-                for (int i = 0; i < amount; i++)
-                {
-                    inventory.Add(cheese);
-                }
-
-                break;
-            case "2":
-                Console.Clear();
-                Console.Write("Type the name of the product: ");
-                name = Console.ReadLine();
-                Console.Write("\nType the price you wish to sell it at: ");
-                price = double.Parse(Console.ReadLine());
-                Console.Write("\nType the productID: ");
-                productID = int.Parse(Console.ReadLine());
-                do
-                {
-                    Console.WriteLine("\nWhat type of milk you wish to add? ");
-                    Console.WriteLine("(1) Skimmed");
-                    Console.WriteLine("(2) Reduced");
-                    Console.WriteLine("(3) Whole");
-                    choice = Console.ReadLine();
-                    switch(choice)
+                    for (int i = 0; i < amount; i++)
                     {
-                        case "1":
-                            milkType = MilkType.Skimmed;
-                            percentFat = 0.5;
-                            fail = false;
-                            break;
-                        case "2":
-                            milkType = MilkType.Reduced;
-                            percentFat = 1.5;
-                            fail = false;
-                            break;
-                        case "3":
-                            milkType = MilkType.Whole;
-                            percentFat = 3.0;
-                            fail = false;
-                            break;
-                        default:
-                            Console.WriteLine("That is not an available number. Please enter a number corresponding to one of the possible choices in the menu. Press enter to try again.");
-                            Console.ReadLine();
-                            Console.Clear();
-                            break;
+                        inventory.Add(cheese);
                     }
-                }while (fail);
-                Console.Write("\nType the amount of products of this type you want to add: ");
-                amount = int.Parse(Console.ReadLine());
+                    break;
+                case "2":
+                    Milk milk = new();
 
-                Milk milk = new(price, productID, name, milkType, percentFat);
+                    Console.Write("\nType the amount of products of this type you want to add: ");
+                    amount = int.Parse(Console.ReadLine());
 
-                for (int i = 0; i < amount; i++)
-                {
-                    inventory.Add(milk);
-                }
+                    for (int i = 0; i < amount; i++)
+                    {
+                        inventory.Add(milk);
+                    }
+                    break;
+                case "3":
+                    YoghurtAndSourmilk yoghurtAndSourmilk = new();
 
-                break;
-            case "3":
+                    Console.Write("\nType the amount of products of this type you want to add: ");
+                    amount = int.Parse(Console.ReadLine());
 
+                    for (int i = 0; i < amount; i++)
+                    {
+                        inventory.Add(yoghurtAndSourmilk);
+                    }
+                    break;
+                case "4":
+                    Butter butter = new();
 
-                break;
-        }
-        
+                    Console.Write("\nType the amount of products of this type you want to add: ");
+                    amount = int.Parse(Console.ReadLine());
+
+                    for (int i = 0; i < amount; i++)
+                    {
+                        inventory.Add(butter);
+                    }
+                    break;
+                case "5":
+                    Cream cream = new();
+
+                    Console.Write("\nType the amount of products of this type you want to add: ");
+                    amount = int.Parse(Console.ReadLine());
+
+                    for (int i = 0; i < amount; i++)
+                    {
+                        inventory.Add(cream);
+                    }
+                    break;
+                case"6":
+                    Console.Clear();
+                    keepGoing = false;
+                    break;
+                default:
+                    Console.WriteLine("That is not an available number. Please enter a number corresponding to one of the possible choices in the menu. Press enter to try again.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    break;
+            }
+        }while (keepGoing);
     }
     static void CustomerMenu(){
         while (true)
@@ -153,8 +144,7 @@ public class DairyStore{
             Console.WriteLine("(1) Browse the shop");
             Console.WriteLine("(2) View Cart");
             Console.WriteLine("(3) Go to checkout");
-            String choice = Console.ReadLine();
-            switch (choice)
+            switch (Console.ReadLine())
             {
                 case "1":
                     //Shop();

@@ -5,15 +5,15 @@ public class Cheese : DairyProduct
     public Cheese(){
         Console.Clear();
                 Console.Write("Type the name of the product: ");
-                this.name = Console.ReadLine();
+                name = Console.ReadLine();
                 Console.Write("\nType the price you wish to sell it at: ");
-                this.price = double.Parse(Console.ReadLine());
+                price = double.Parse(Console.ReadLine());
                 Console.Write("\nType the productID: ");
-                this.productID = int.Parse(Console.ReadLine());
+                productID = int.Parse(Console.ReadLine());
                 Console.Write("\nType the age of the cheese: ");
-                this.age = int.Parse(Console.ReadLine());
+                age = int.Parse(Console.ReadLine());
                 Console.Write("\nType the percentage of fat in the product: ");
-                this.percentFat = double.Parse(Console.ReadLine());
+                percentFat = double.Parse(Console.ReadLine());
     }
 
     public override string Print()
