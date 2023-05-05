@@ -9,16 +9,17 @@ public class Cheese : DairyProduct
 
         do
         {
-        Console.Write("\nType the age of the cheese in months: ");
-        isInt = int.TryParse(Console.ReadLine(), out age);
-        if(age <= 0){
-            isInt = false;
-        }
-        if(!isInt){
-            Console.WriteLine("Input the age as a positive integer. Press enter to try again.");
-            Console.ReadLine();
             Console.Clear();
-        }
+            Console.Write("\nType the age of the cheese in months: ");
+            isInt = int.TryParse(Console.ReadLine(), out age);
+            if(age <= 0){
+                isInt = false;
+            }
+            if(!isInt){
+                Console.WriteLine("Input the age as a positive integer. Press enter to try again.");
+                Console.ReadLine();
+                Console.Clear();
+            }
         } while (!isInt);
     }
 

@@ -9,6 +9,7 @@ public class Cream : DairyProduct
         AddValuesToParameters();
         do
         {
+            Console.Clear();
             Console.WriteLine("\nWhat type of cream you wish to add? ");
             Console.WriteLine("(1) Cooking cream");
             Console.WriteLine("(2) Whipping cream");

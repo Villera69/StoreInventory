@@ -8,6 +8,7 @@ public class YoghurtAndSourmilk : DairyProduct
         AddValuesToParameters();
         do
         {
+            Console.Clear();
             Console.WriteLine("\nWhat taste does the product that you wish to add have? ");
             Console.WriteLine("(1) Neutral");
             Console.WriteLine("(2) Vanilla");

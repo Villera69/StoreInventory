@@ -2,16 +2,28 @@ namespace Store;
 public abstract class Product
 {
     protected String name;
-    protected int productID;
+    protected long productID;
 
     protected double price;
+
+    public long GetID(){
+        return productID;
+    }
+    public void SetPrice(double newPrice){
+        price = newPrice;
+    }
+    public static long UnixTimeNow()
+    {
+        var timeSpan = (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0));
+        return (long)timeSpan.TotalSeconds;
+    }
 
     public abstract String Print();
 
     public virtual void AddValuesToParameters(){
         bool containsInt = true;
         bool isDouble = false;
-        bool isInt = false;
+        productID = UnixTimeNow();
         do
         {
             Console.Write("Type the name of the product: ");
@@ -27,19 +39,6 @@ public abstract class Product
                 Console.Clear();
             }
         } while (containsInt);
-        do
-        {
-            Console.Write("\nType the products ID: ");
-            isInt = int.TryParse(Console.ReadLine(), out productID);
-            if(productID.ToString().Length != 6){
-                isInt = false;
-            }
-            if(!isInt){
-                Console.WriteLine("\nThe product ID is an integer containing only 6 numbers. Press enter to try again.");
-                Console.ReadLine();
-                Console.Clear();
-            }
-        } while (!isInt);
         do
         {
             Console.Write("\nType the price you wish to sell it at: ");

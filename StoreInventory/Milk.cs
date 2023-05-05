@@ -10,6 +10,7 @@ public class Milk : DairyProduct
         AddValuesToParameters();
         do
         {
+            Console.Clear();
             Console.WriteLine("\nWhat type of milk you wish to add? ");
             Console.WriteLine("(1) Skimmed");
             Console.WriteLine("(2) Reduced");

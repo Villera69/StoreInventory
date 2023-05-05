@@ -9,6 +9,7 @@ public class Butter : DairyProduct
         AddValuesToParameters();
         do
         {
+            Console.Clear();
             Console.WriteLine("\nHow salty is the butter? ");
             Console.WriteLine("(1) Unsalted");
             Console.WriteLine("(2) Salted");
