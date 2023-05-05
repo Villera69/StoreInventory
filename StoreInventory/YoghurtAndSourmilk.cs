@@ -4,16 +4,8 @@ public class YoghurtAndSourmilk : DairyProduct
     protected Taste taste;
     public YoghurtAndSourmilk(){
         String choice;
-        Boolean fail = true;
-        Console.Clear();
-        Console.Write("Type the name of the product: ");
-        name = Console.ReadLine();
-        Console.Write("\nType the price you wish to sell it at: ");
-        price = double.Parse(Console.ReadLine());
-        Console.Write("\nType the productID: ");
-        productID = int.Parse(Console.ReadLine());
-        Console.Write("\nType the percentage of fat in the product: ");
-        percentFat = double.Parse(Console.ReadLine());
+        bool fail = true;
+        AddValuesToParameters();
         do
         {
             Console.WriteLine("\nWhat taste does the product that you wish to add have? ");
@@ -56,7 +48,7 @@ public class YoghurtAndSourmilk : DairyProduct
 
      public override string Print()
     {
-        return $"Name: {name}, Price: {price} SEK, ProductID: {productID}, Taste: {taste}, Percent Fat: {percentFat}%";
+        return $"[{productID}] Name: {name}, Price: {price} SEK, Taste: {taste}, Percent Fat: {percentFat}%";
     }
 }
 

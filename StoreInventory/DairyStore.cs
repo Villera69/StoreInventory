@@ -2,52 +2,34 @@ using System.Security.Authentication;
 namespace Store;
 
 public class DairyStore{
-
     Inventory inventory = new();
+    bool keepGoing;
+    int removeID;
     public void Run(){
         MainMenu();
     }
     void MainMenu(){
-        while (true)
+        do
         {
-            Console.WriteLine("Welcome to the dairy store. Are you a customer or an administrator? Choose by entering one of the numbers in the menu below");
-            Console.WriteLine(" (1) Administrator");
-            Console.WriteLine(" (2) Customer");
+            Console.WriteLine("Welcome to the store inventory. What would you like to do?");
+            Console.WriteLine("(1) Add a product to the store");
+            Console.WriteLine("(2) Edit a product in the inventory");
+            Console.WriteLine("(3) View Inventory");
+            Console.WriteLine("(4) Exit the program");
             switch (Console.ReadLine())
-            {
-                case "1":
-                    AdminMenu();
-                    break;
-                case "2":
-                    CustomerMenu();
-                    break;
-                default:
-                    Console.WriteLine("That is not an available number.Please type a number corresponding to one of the possible choices in the menu. Press enter to try again.");
-                    Console.ReadLine();
-                    Console.Clear();
-                    break;
-            }
-        }
-    }
-    void AdminMenu(){
-        while (true)
-        {
-            Console.WriteLine("Welcome, Administrator");
-            Console.WriteLine(" (1) Add a product to the store");
-            Console.WriteLine(" (2) Remove a product from the store");
-            Console.WriteLine(" (3) Change the price of any currently stocked product");
-            String choice = Console.ReadLine();
-            switch (choice)
             {
                 case "1":
                     AddProductMenu();
                     break;
                 case "2":
-                    //RemoveProductMenu();
+                    EditProductMenu();
                     break;
-
                 case "3":
-                    //ChangePriceMenu();
+                    Console.Clear();
+                    inventory.PrintInventory();
+                    break;
+                case "4":
+                    keepGoing = false;
                     break;
                 default:
                     Console.WriteLine("That is not an available number. Please enter a number corresponding to one of the possible choices in the menu. Press enter to try again.");
@@ -55,10 +37,9 @@ public class DairyStore{
                     Console.Clear();
                     break;
             }
-        }
+        }while(keepGoing);
     }
     void AddProductMenu(){
-        Boolean keepGoing = true;
         do
         {
             Console.WriteLine("What type of product do you wish to add?");
@@ -137,23 +118,31 @@ public class DairyStore{
             }
         }while (keepGoing);
     }
-    static void CustomerMenu(){
+    public void EditProductMenu(){
         while (true)
         {
-            Console.WriteLine("Welcome, Customer");
-            Console.WriteLine("(1) Browse the shop");
-            Console.WriteLine("(2) View Cart");
-            Console.WriteLine("(3) Go to checkout");
+            Console.WriteLine("(1) Remove product using product ID");
+            Console.WriteLine("(2) Change the  price of a product");
+            Console.WriteLine("(3) Print the current inventory");
+            Console.WriteLine("(4) Exit to Main menu");
             switch (Console.ReadLine())
             {
                 case "1":
-                    //Shop();
+                    do
+                    {
+                        Console.WriteLine("Write the product ID of the product you wish to remove.");
+                        keepGoing = int.TryParse(Console.ReadLine(), out removeID);
+
+                    } while (!keepGoing);
+
                     break;
                 case "2":
-                    //ViewCart();
+                    
                     break;
+
                 case "3":
-                    //Checkout();
+                    Console.Clear();
+                    inventory.PrintInventory();
                     break;
                 default:
                     Console.WriteLine("That is not an available number. Please enter a number corresponding to one of the possible choices in the menu. Press enter to try again.");
@@ -161,9 +150,6 @@ public class DairyStore{
                     Console.Clear();
                     break;
             }
-
         }
     }
-
-
 }

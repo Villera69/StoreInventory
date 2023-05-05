@@ -5,6 +5,7 @@ public class Inventory{
 
     public void Add(Product product){
         inventory.Add(product);
+        Console.WriteLine(inventory[^1].Print());
     }
 
     public void PrintInventory(){

@@ -3,15 +3,10 @@ public class Cream : DairyProduct
 {
     Useage useage;
     public Cream(){
-        String choice;
-        Boolean fail = true;
         Console.Clear();
-        Console.Write("Type the name of the product: ");
-        name = Console.ReadLine();
-        Console.Write("\nType the price you wish to sell it at: ");
-        price = double.Parse(Console.ReadLine());
-        Console.Write("\nType the productID: ");
-        productID = int.Parse(Console.ReadLine());
+        String choice;
+        bool fail = true;
+        AddValuesToParameters();
         do
         {
             Console.WriteLine("\nWhat type of cream you wish to add? ");
@@ -22,12 +17,10 @@ public class Cream : DairyProduct
             {
                 case "1":
                     useage = Useage.Cooking;
-                    percentFat = 0.5;
                     fail = false;
                     break;
                 case "2":
                     useage = Useage.Whipping;
-                    percentFat = 1.5;
                     fail = false;
                     break;
                 default:
@@ -41,7 +34,7 @@ public class Cream : DairyProduct
 
      public override string Print()
     {
-        return $"Name: {name}, Price: {price} SEK, ProductID: {productID}, Type: {useage} cream, Percent Fat: {percentFat}%";
+        return $"[{productID}] Name: {name}, Price: {price} SEK, Type: {useage} cream, Percent Fat: {percentFat}%";
     }
 }
 

@@ -4,20 +4,26 @@ public class Cheese : DairyProduct
     int age;
     public Cheese(){
         Console.Clear();
-                Console.Write("Type the name of the product: ");
-                name = Console.ReadLine();
-                Console.Write("\nType the price you wish to sell it at: ");
-                price = double.Parse(Console.ReadLine());
-                Console.Write("\nType the productID: ");
-                productID = int.Parse(Console.ReadLine());
-                Console.Write("\nType the age of the cheese: ");
-                age = int.Parse(Console.ReadLine());
-                Console.Write("\nType the percentage of fat in the product: ");
-                percentFat = double.Parse(Console.ReadLine());
+        bool isInt;
+        AddValuesToParameters();
+
+        do
+        {
+        Console.Write("\nType the age of the cheese in months: ");
+        isInt = int.TryParse(Console.ReadLine(), out age);
+        if(age <= 0){
+            isInt = false;
+        }
+        if(!isInt){
+            Console.WriteLine("Input the age as a positive integer. Press enter to try again.");
+            Console.ReadLine();
+            Console.Clear();
+        }
+        } while (!isInt);
     }
 
     public override string Print()
     {
-        return $"Name: {name}, Price: {price} SEK, ProductID: {productID}, Age: aged {age} years, Percent fat: {percentFat}%";
+        return $"[{productID}] Name: {name}, Price: {price} SEK, Age: aged {age} months, Percent fat: {percentFat}%";
     }
 }

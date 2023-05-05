@@ -4,15 +4,10 @@ public class Milk : DairyProduct
 {
     MilkType milkType;
     public Milk(){
-        String choice;
-        Boolean fail = true;
         Console.Clear();
-        Console.Write("Type the name of the product: ");
-        name = Console.ReadLine();
-        Console.Write("\nType the price you wish to sell it at: ");
-        price = double.Parse(Console.ReadLine());
-        Console.Write("\nType the productID: ");
-        productID = int.Parse(Console.ReadLine());
+        String choice;
+        bool fail = true;
+        AddValuesToParameters();
         do
         {
             Console.WriteLine("\nWhat type of milk you wish to add? ");
@@ -24,17 +19,14 @@ public class Milk : DairyProduct
             {
                 case "1":
                     milkType = MilkType.Skimmed;
-                    percentFat = 0.5;
                     fail = false;
                     break;
                 case "2":
                     milkType = MilkType.Reduced;
-                    percentFat = 1.5;
                     fail = false;
                     break;
                 case "3":
                     milkType = MilkType.Whole;
-                    percentFat = 3.0;
                     fail = false;
                     break;
                 default:
@@ -48,7 +40,7 @@ public class Milk : DairyProduct
 
     public override string Print()
     {
-        return $"Name: {name}, Price: {price} SEK, ProductID: {productID}, Type: {milkType} milk, Percent Fat: {percentFat}%";
+        return $"[{productID}] Name: {name}, Price: {price} SEK, Type: {milkType} milk, Percent Fat: {percentFat}%";
     }
 }
 

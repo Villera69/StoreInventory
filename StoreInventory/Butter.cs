@@ -3,20 +3,13 @@ public class Butter : DairyProduct
 {
     Saltiness saltiness;
     public Butter(){
-        String choice;
-        Boolean fail = true;
         Console.Clear();
-        Console.Write("Type the name of the product: ");
-        name = Console.ReadLine();
-        Console.Write("\nType the price you wish to sell it at: ");
-        price = double.Parse(Console.ReadLine());
-        Console.Write("\nType the productID: ");
-        productID = int.Parse(Console.ReadLine());
-        Console.Write("\nType the percentage of fat in the product: ");
-        percentFat = double.Parse(Console.ReadLine());
+        String choice;
+        bool fail = true;
+        AddValuesToParameters();
         do
         {
-            Console.WriteLine("\nWhat level of salt does the product that you wish to add have? ");
+            Console.WriteLine("\nHow salty is the butter? ");
             Console.WriteLine("(1) Unsalted");
             Console.WriteLine("(2) Salted");
             Console.WriteLine("(3) Extra salted");
@@ -46,7 +39,7 @@ public class Butter : DairyProduct
 
      public override string Print()
     {
-        return $"Name: {name}, Price: {price} SEK, ProductID: {productID}, Type: {saltiness}, Percent Fat: {percentFat}%";
+        return $"[{productID}] Name: {name}, Price: {price} SEK, Type: {saltiness}, Percent Fat: {percentFat}%";
     }
 }
 
