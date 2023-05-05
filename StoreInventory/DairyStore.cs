@@ -1,15 +1,16 @@
 using System.Security.Authentication;
 namespace Store;
 
-public class DairyStore{
+public class DairyStore{ //Klassen för dairystore, stället de flesta grejerna händer!!
     Inventory inventory = new();
+    int amount;
     bool keepGoing;
     long changeID;
     double newPrice;
-    public void Run(){      
+    public void Run(){ // börjar köra huvudmenyn
         MainMenu();
     }
-    void MainMenu(){
+    void MainMenu(){ //huvudmenyn. Här väljer användaren vad den vill göra, om den vill lägga till, redigera eller se produkterna.
         do
         {
             keepGoing = true;
@@ -21,11 +22,11 @@ public class DairyStore{
             Console.WriteLine("(4) Exit the program");
             switch (Console.ReadLine())
             {
-                case "1":
+                case "1":   //tar användaren till en ny meny där hen kan lägga till olika typer av produkter
                     AddProductMenu();
                     keepGoing = true;
                     break;
-                case "2":
+                case "2":   //tar användaren till en annan meny där hen kan ändra prisetpå -eller ta bort- produkter
                     if (inventory.Empty())
                     {
                         Console.Clear();
@@ -36,17 +37,17 @@ public class DairyStore{
                         EditProductMenu();
                     }
                     break;
-                case "3":
+                case "3":   //Skriver ut inventoryt
                     Console.Clear();
                     inventory.PrintInventory();
                     Console.WriteLine("\nPress enter to return to the menu.");
                     Console.ReadLine();
                     Console.Clear();
                     break;
-                case "4":
+                case "4":   //TERMINATES!
                     Environment.Exit(0);
                     break;
-                default:
+                default:       //basically felhantering
                     Console.WriteLine("That is not an available number. Please enter a number corresponding to one of the possible choices in the menu. Press enter to try again.");
                     Console.ReadLine();
                     Console.Clear();
@@ -54,7 +55,7 @@ public class DairyStore{
             }
         }while(keepGoing);
     }
-    void AddProductMenu(){
+    void AddProductMenu(){ //Här kan användaren välja att lägga till olika produkter eller gå tillbaka till huvudmenyn
         Console.Clear();
         do
         {   keepGoing = true;
@@ -67,31 +68,31 @@ public class DairyStore{
             Console.WriteLine("(6) Return to the main menu");
             switch(Console.ReadLine())
             {
-                case "1":
+                case "1":   //lägger till ost. Alla värden tilldelas i konstruktorn
                     Cheese cheese = new();
-                    AddProduct(cheese);
+                    AddProduct(cheese); //lägger till objektet ett specificerat antal gånger till inventoryt
                     break;
-                case "2":
+                case "2": //samma
                     Milk milk = new();
                     AddProduct(milk);
                     break;
-                case "3":
+                case "3":   //samma
                     YoghurtAndSourmilk yoghurtAndSourmilk = new();
                     AddProduct(yoghurtAndSourmilk);
                     break;
-                case "4":
+                case "4":   //samma
                     Butter butter = new();
                     AddProduct(butter);
                     break;
-                case "5":
+                case "5":   //samma
                     Cream cream = new();
                     AddProduct(cream);
                     break;
-                case"6":
+                case"6":    //lämnar denna meny och då hamnar användaren vid huvudmenyn
                     Console.Clear();
                     keepGoing = false;
                     break;
-                default:
+                default:    //felhantering
                     Console.WriteLine("That is not an available number. Please enter a number corresponding to one of the possible choices in the menu. Press enter to try again.");
                     Console.ReadLine();
                     Console.Clear();
@@ -99,9 +100,17 @@ public class DairyStore{
             }
         }while (keepGoing);
     }
-    public void AddProduct(Product product){
-        Console.Write("\nType the amount of products of this type you want to add: ");
-        int amount = int.Parse(Console.ReadLine());
+    public void AddProduct(Product product){ //Lägger till en produkt ett av användaren specificerat antal gånger, till inventoryt
+        do
+        {
+            Console.Clear();
+            Console.Write("\nType the amount of products of this type you want to add: ");
+            keepGoing = !int.TryParse(Console.ReadLine(),out amount);
+            if(keepGoing && amount <= 0){
+                Console.WriteLine("\nThe amount needs to be a positive integer. Press enter to try again.");
+                Console.ReadLine();
+            }
+        } while (keepGoing);
 
         for (int i = 0; i < amount; i++)
         {
@@ -111,7 +120,7 @@ public class DairyStore{
         Console.ReadLine();
         Console.Clear();
     }
-    public void EditProductMenu(){
+    public void EditProductMenu(){ //en meny där användaren kan ändra på redan tillagda produkter i inventoryt. Hen kan antingen ta bort produkter, ändra priset eller visa inventoryt.
         while (true)
         {
             Console.Clear();
@@ -121,7 +130,7 @@ public class DairyStore{
             Console.WriteLine("(4) Exit to Main menu");
             switch (Console.ReadLine())
             {
-                case "1":
+                case "1": //Här skriver användaren in produkt ID:t och därefter tas produkten i fråga bort. Om användaren kom hit av misstag kan de välja att lämna detta menyval.
                     if(inventory.Empty()){
                         Console.WriteLine("The inventory is empty, therefore you cannot use this feature. Press enter to return to the menu.");
                     }
@@ -151,7 +160,7 @@ public class DairyStore{
                         Console.ReadLine();
                     }
                     break;
-                case "2":
+                case "2": //Här skriver användaren in produkt ID:t och därefter priset de vill ändra till. produktens pris ändras. Om användaren kom hit av misstag kan de välja att lämna detta menyval.
                     if(inventory.Empty()){
                         Console.WriteLine("The inventory is empty, therefore you cannot use this feature. Press enter to return to the menu.");
                         break;
@@ -192,13 +201,13 @@ public class DairyStore{
                     inventory.ChangePrice(changeID, newPrice);
                     break;
 
-                case "3":
+                case "3": //Samma som val 3 i huvudmenyn. Visar inventoryt
                     Console.Clear();
                     inventory.PrintInventory();
                     Console.WriteLine("\nPress enter to continue to the menu.");
                     Console.ReadLine();
                     break;
-                case"4":
+                case"4": //Går tillbaka till huvudmenyn
                     MainMenu();
                     break;
                 default:

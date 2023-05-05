@@ -1,21 +1,19 @@
 namespace Store;
-public class Butter : DairyProduct
+public class Butter : DairyProduct //Klassen för produkttypen butter, subklass av både dairyproduct och product
 {
     Saltiness saltiness;
-    public Butter(){
+    public Butter(){    //Konstruktor för butter. Här sätts alla värdena.
         Console.Clear();
-        String choice;
         bool fail = true;
-        AddValuesToParameters();
-        do
+        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        do  //här sätts värdet för den butter-specifika attributen saltiness.
         {
             Console.Clear();
             Console.WriteLine("\nHow salty is the butter? ");
             Console.WriteLine("(1) Unsalted");
             Console.WriteLine("(2) Salted");
             Console.WriteLine("(3) Extra salted");
-            choice = Console.ReadLine();
-            switch(choice)
+            switch(Console.ReadLine())
             {
                 case "1":
                     saltiness = Saltiness.Unsalted;
@@ -38,13 +36,13 @@ public class Butter : DairyProduct
         }while (fail);
     }
 
-     public override string Print()
+     public override string Print() //Denhär används för att skriva ut produktens alla värden.
     {
         return $"[{productID}] Name: {name}, Price: {price} SEK, Type: {saltiness}, Percent Fat: {percentFat}%";
     }
 }
 
-public enum Saltiness
+public enum Saltiness //Enumeration för saltiness.
 {
     Unsalted,
     Salted,

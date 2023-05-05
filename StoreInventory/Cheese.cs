@@ -1,13 +1,12 @@
 namespace Store;
-public class Cheese : DairyProduct
+public class Cheese : DairyProduct //Klassen för produkttypen cheese, subklass av både dairyproduct och product
 {
     int age;
-    public Cheese(){
+    public Cheese(){    //Konstruktor för butter. Här sätts alla värdena.
         Console.Clear();
         bool isInt;
-        AddValuesToParameters();
-
-        do
+        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        do  //här sätts värdet för den cheese-specifika attributen age.
         {
             Console.Clear();
             Console.Write("\nType the age of the cheese in months: ");
@@ -23,7 +22,7 @@ public class Cheese : DairyProduct
         } while (!isInt);
     }
 
-    public override string Print()
+    public override string Print() //Denhär används för att skriva ut produktens alla värden.
     {
         return $"[{productID}] Name: {name}, Price: {price} SEK, Age: aged {age} months, Percent fat: {percentFat}%";
     }

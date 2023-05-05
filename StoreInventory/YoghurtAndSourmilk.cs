@@ -1,12 +1,12 @@
 namespace Store;
-public class YoghurtAndSourmilk : DairyProduct
+public class YoghurtAndSourmilk : DairyProduct  //Klassen för produkttypen yoghurt and sourmilk, subklass av både dairyproduct och product
 {
     protected Taste taste;
-    public YoghurtAndSourmilk(){
+    public YoghurtAndSourmilk(){     //Konstruktor för yoghurt and sourmilk. Här sätts alla värdena.
         String choice;
         bool fail = true;
-        AddValuesToParameters();
-        do
+        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        do  //här sätts värdet för den yoghurt and sourmilk-specifika attributen taste.
         {
             Console.Clear();
             Console.WriteLine("\nWhat taste does the product that you wish to add have? ");
@@ -47,13 +47,13 @@ public class YoghurtAndSourmilk : DairyProduct
         }while (fail);
     }
 
-     public override string Print()
+     public override string Print() //Denhär används för att skriva ut produktens alla värden.
     {
         return $"[{productID}] Name: {name}, Price: {price} SEK, Taste: {taste}, Percent Fat: {percentFat}%";
     }
 }
 
-public enum Taste
+public enum Taste   //Enumeration för useage
 {
     Neutral,
     Vanilla,

@@ -1,15 +1,15 @@
 namespace Store;
-public abstract class DairyProduct : Product
+public abstract class DairyProduct : Product //Klassen för produkttypen Dairy product, subklass av product
 {
     protected double percentFat;
 
-    public override abstract String Print();
+    public override abstract String Print(); //Denna följer med från product
 
-    public override void AddValuesToParameters(){
+    public override void AddValuesToParameters(){   //Här tilldelas värden till de olika attributerna av produkterna. Denna funktion inheritas till alla subklasser.
         bool containsInt = true;
         bool isDouble = false;
-        productID = UnixTimeNow();
-        do
+        productID = CurrentUnixTime(); //Unix time är antal sekunder från 1970, ett sätt att få unika produkt ID:n för alla olika produkter.
+        do  //namnet tilldelas här
         {
             Console.Clear();
             Console.Write("Type the name of the product: ");
@@ -25,7 +25,7 @@ public abstract class DairyProduct : Product
                 Console.Clear();
             }
         } while (containsInt);
-        do
+        do  //Här skriver användaren in priset
         {
             Console.Clear();
             Console.Write("\nType the price you wish to sell it at: ");
@@ -39,7 +39,7 @@ public abstract class DairyProduct : Product
                 Console.Clear();
             }
         } while (!isDouble);
-        do
+        do  //Användaren stoppar in produktens fetthalt här.
         {
             Console.Clear();
             Console.Write("\nType the percentage of fat in the product: ");

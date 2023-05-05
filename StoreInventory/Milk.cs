@@ -1,22 +1,20 @@
 namespace Store;
 
-public class Milk : DairyProduct
+public class Milk : DairyProduct    //Klassen för produkttypen milk, subklass av både dairyproduct och product
 {
     MilkType milkType;
-    public Milk(){
+    public Milk(){  //Konstruktor för milk. Här sätts alla värdena.
         Console.Clear();
-        String choice;
         bool fail = true;
-        AddValuesToParameters();
-        do
+        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        do  //här sätts värdet för den milk-specifika attributen milk type.
         {
             Console.Clear();
             Console.WriteLine("\nWhat type of milk you wish to add? ");
             Console.WriteLine("(1) Skimmed");
             Console.WriteLine("(2) Reduced");
             Console.WriteLine("(3) Whole");
-            choice = Console.ReadLine();
-            switch(choice)
+            switch(Console.ReadLine())
             {
                 case "1":
                     milkType = MilkType.Skimmed;
@@ -39,13 +37,13 @@ public class Milk : DairyProduct
         }while (fail);
     }
 
-    public override string Print()
+    public override string Print() //Denhär används för att skriva ut produktens alla värden.
     {
         return $"[{productID}] Name: {name}, Price: {price} SEK, Type: {milkType} milk, Percent Fat: {percentFat}%";
     }
 }
 
-public enum MilkType
+public enum MilkType    //Enumeration för milk type
 {
     Skimmed,
     Reduced,

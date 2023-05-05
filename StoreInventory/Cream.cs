@@ -1,20 +1,18 @@
 namespace Store;
-public class Cream : DairyProduct
+public class Cream : DairyProduct  //Klassen för produkttypen cream, subklass av både dairyproduct och product
 {
     Useage useage;
-    public Cream(){
+    public Cream(){     //Konstruktor för cream. Här sätts alla värdena.
         Console.Clear();
-        String choice;
         bool fail = true;
-        AddValuesToParameters();
-        do
+        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        do  //här sätts värdet för den cream-specifika attributen useage.
         {
             Console.Clear();
             Console.WriteLine("\nWhat type of cream you wish to add? ");
             Console.WriteLine("(1) Cooking cream");
             Console.WriteLine("(2) Whipping cream");
-            choice = Console.ReadLine();
-            switch(choice)
+            switch(Console.ReadLine())
             {
                 case "1":
                     useage = Useage.Cooking;
@@ -33,13 +31,13 @@ public class Cream : DairyProduct
         }while (fail);
     }
 
-     public override string Print()
+     public override string Print() //Denhär används för att skriva ut produktens alla värden.
     {
         return $"[{productID}] Name: {name}, Price: {price} SEK, Type: {useage} cream, Percent Fat: {percentFat}%";
     }
 }
 
-public enum Useage
+public enum Useage  //Enumeration för useage
 {
     Cooking,
     Whipping,
