@@ -5,7 +5,7 @@ public class Cream : DairyProduct  //Klassen för produkttypen cream, subklass a
     public Cream(){     //Konstruktor för cream. Här sätts alla värdena.
         Console.Clear();
         bool fail = true;
-        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        AddValuesToAttributes();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
         do  //här sätts värdet för den cream-specifika attributen useage.
         {
             Console.Clear();

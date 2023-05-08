@@ -5,7 +5,7 @@ public class Cheese : DairyProduct //Klassen för produkttypen cheese, subklass 
     public Cheese(){    //Konstruktor för butter. Här sätts alla värdena.
         Console.Clear();
         bool isInt;
-        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        AddValuesToAttributes();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
         do  //här sätts värdet för den cheese-specifika attributen age.
         {
             Console.Clear();

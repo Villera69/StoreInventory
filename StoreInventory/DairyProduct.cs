@@ -5,7 +5,7 @@ public abstract class DairyProduct : Product //Klassen för produkttypen Dairy p
 
     public override abstract String Print(); //Denna följer med från product
 
-    public override void AddValuesToParameters(){   //Här tilldelas värden till de olika attributerna av produkterna. Denna funktion inheritas till alla subklasser.
+    public override void AddValuesToAttributes(){   //Här tilldelas värden till de olika attributerna av produkterna. Denna funktion inheritas till alla subklasser.
         bool containsInt = true;
         bool isDouble = false;
         productID = CurrentUnixTime(); //Unix time är antal sekunder från 1970, ett sätt att få unika produkt ID:n för alla olika produkter.

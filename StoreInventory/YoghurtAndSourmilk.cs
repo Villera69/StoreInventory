@@ -5,7 +5,7 @@ public class YoghurtAndSourmilk : DairyProduct  //Klassen för produkttypen yogh
     public YoghurtAndSourmilk(){     //Konstruktor för yoghurt and sourmilk. Här sätts alla värdena.
         String choice;
         bool fail = true;
-        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        AddValuesToAttributes();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
         do  //här sätts värdet för den yoghurt and sourmilk-specifika attributen taste.
         {
             Console.Clear();

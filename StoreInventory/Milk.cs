@@ -6,7 +6,7 @@ public class Milk : DairyProduct    //Klassen för produkttypen milk, subklass a
     public Milk(){  //Konstruktor för milk. Här sätts alla värdena.
         Console.Clear();
         bool fail = true;
-        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        AddValuesToAttributes();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
         do  //här sätts värdet för den milk-specifika attributen milk type.
         {
             Console.Clear();

@@ -5,7 +5,7 @@ public class Butter : DairyProduct //Klassen för produkttypen butter, subklass 
     public Butter(){    //Konstruktor för butter. Här sätts alla värdena.
         Console.Clear();
         bool fail = true;
-        AddValuesToParameters();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
+        AddValuesToAttributes();    // denhär fixar allt generiskt, såsom produkt ID, namn, pris och fetthalt
         do  //här sätts värdet för den butter-specifika attributen saltiness.
         {
             Console.Clear();

@@ -19,5 +19,5 @@ public abstract class Product //huvudklassen till alla produkttyper. innehåller
 
     public abstract String Print(); // är med i alla produkter, används för att skriva ut 
 
-    public abstract void AddValuesToParameters(); //denna ärvs av dairyproducts, används för att tilldela värden till de olika attributerna i produkterna.
+    public abstract void AddValuesToAttributes(); //denna ärvs av dairyproducts, används för att tilldela värden till de olika attributerna i produkterna.
 }
